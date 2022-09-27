@@ -5,10 +5,14 @@ import com.yunusAhmet.rentACar.dto.CarDto;
 import com.yunusAhmet.rentACar.dto.CreateCarRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/car")
 @RestController
@@ -20,10 +24,10 @@ public class CarController {
         this.carManager = carManager;
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<CarDto> createCar(@Valid @RequestBody CreateCarRequest request){
 
-        return new ResponseEntity<>(carManager.addCar(request),HttpStatus.CREATED);
+        return new ResponseEntity<>(carManager.createCar(request),HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -37,6 +41,5 @@ public class CarController {
         carManager.deleteCarByCarId(carId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 
 }

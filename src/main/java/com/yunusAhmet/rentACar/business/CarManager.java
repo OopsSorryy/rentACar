@@ -11,7 +11,6 @@ import com.yunusAhmet.rentACar.entity.Color;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,13 +31,14 @@ public class CarManager {
         this.modelMapper = modelMapper;
     }
 
-    public CarDto addCar(CreateCarRequest createCarRequest){
+    public CarDto createCar(CreateCarRequest createCarRequest){
         Brand brand = brandManager.getBrandByBrandId(createCarRequest.getBrandId());
 
         List<Integer> colorId=createCarRequest.getColorId();
         List<Color> colors = colorId.stream().map(colorManager::getColorByColorId).collect(Collectors.toList());
 
-        Car car = new Car( createCarRequest.getCarName(),createCarRequest.getDailyPrice(),createCarRequest.getProductYear(),brand,colors);
+        Car car = new Car( createCarRequest.getCarName(),createCarRequest.getDailyPrice(),
+                createCarRequest.getProductYear(),brand,colors);
 
         return modelMapper.map(carDao.save(car),CarDto.class);
 
@@ -62,4 +62,5 @@ public class CarManager {
            }
 
     }
+
 }
