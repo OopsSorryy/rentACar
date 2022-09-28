@@ -3,8 +3,10 @@ package com.yunusAhmet.rentACar.dataAccess;
 import com.yunusAhmet.rentACar.entity.Brand;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BrandDao extends JpaRepository<Brand,Integer> {
+import java.util.Optional;
 
+public interface BrandDao extends JpaRepository<Brand,Integer> {
+    Optional<Brand> findBrandByBrandName(String brandName);
 
 
 }

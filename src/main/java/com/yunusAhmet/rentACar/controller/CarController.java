@@ -3,16 +3,15 @@ package com.yunusAhmet.rentACar.controller;
 import com.yunusAhmet.rentACar.business.CarManager;
 import com.yunusAhmet.rentACar.dto.CarDto;
 import com.yunusAhmet.rentACar.dto.CreateCarRequest;
+import com.yunusAhmet.rentACar.dto.UpdateCarRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
+
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 @RequestMapping("/car")
 @RestController
@@ -40,6 +39,11 @@ public class CarController {
     public ResponseEntity<Void> deleteCarByCarId(@PathVariable int carId){
         carManager.deleteCarByCarId(carId);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity<CarDto> updateCar(@Valid @RequestBody UpdateCarRequest request){
+        return ResponseEntity.ok(carManager.updateCar(request));
     }
 
 }

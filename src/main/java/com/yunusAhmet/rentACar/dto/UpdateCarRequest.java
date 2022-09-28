@@ -7,9 +7,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Data
-public class CarDto {
-
-    //carDto ıle car entıty ıcerısındekı degısken ısımlerının aynı olması lazım
+public class UpdateCarRequest {
 
     private int carId;
 
@@ -21,9 +19,8 @@ public class CarDto {
 
     private String productYear;
 
-    private BrandDto brand;
+    private int brandId;
 
-    private List<ColorDto> carColors;
-
+    private List<Integer> colorId;
 
 }

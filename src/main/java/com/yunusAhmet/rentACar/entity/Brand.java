@@ -23,4 +23,8 @@ public class Brand {
 
     @OneToMany(cascade = CascadeType.MERGE,mappedBy = "brand",fetch = FetchType.LAZY)
     private List<Car> car;
+
+    public Brand(String brandName){
+        this.brandName = brandName;
+    }
 }

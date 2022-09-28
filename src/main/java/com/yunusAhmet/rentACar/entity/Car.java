@@ -25,14 +25,16 @@ public class Car {
 
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
-            name = "car_color",
-            joinColumns = @JoinColumn(name = "carId"),
-            inverseJoinColumns = @JoinColumn(name = "colorId"))
+            joinColumns = @JoinColumn,
+            inverseJoinColumns = @JoinColumn)
     List<Color> carColors;
 
     @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
-    @JoinColumn(name = "brandId")
+    @JoinColumn
     private Brand brand;
+
+    @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY,mappedBy = "car")
+    private Rental rental;
 
     public Car( String carName, Long dailyPrice, String productYear, Brand brand,List<Color> carColors) {
         this.carName = carName;

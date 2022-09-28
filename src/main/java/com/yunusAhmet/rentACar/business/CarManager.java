@@ -5,6 +5,7 @@ import com.yunusAhmet.rentACar.core.constant.Constant;
 import com.yunusAhmet.rentACar.dataAccess.CarDao;
 import com.yunusAhmet.rentACar.dto.CarDto;
 import com.yunusAhmet.rentACar.dto.CreateCarRequest;
+import com.yunusAhmet.rentACar.dto.UpdateCarRequest;
 import com.yunusAhmet.rentACar.entity.Brand;
 import com.yunusAhmet.rentACar.entity.Car;
 import com.yunusAhmet.rentACar.entity.Color;
@@ -46,8 +47,8 @@ public class CarManager {
 
     public List<CarDto> getAllCar() {
         List<Car> cars = this.carDao.findAll();
-        List<CarDto> dtos= cars.stream().map(car -> modelMapper.map(car,CarDto.class)).collect(Collectors.toList());
-        return dtos;
+        return cars.stream().map(car -> modelMapper.map(car,CarDto.class)).collect(Collectors.toList());
+
     }
 
     protected Car findCarByCarId(int carId){
@@ -55,11 +56,21 @@ public class CarManager {
     }
 
     public void deleteCarByCarId(int carId){
-           if(carDao.findById(carId).isPresent()){
-               carDao.deleteById(carId);
-           }else{
-               throw new CarNotFoundException(Constant.CAR_NOT_FOUND);
-           }
+        carDao.deleteById(findCarByCarId(carId).getCarId());
+    }
+
+    public CarDto updateCar(UpdateCarRequest updateCarRequest) {
+        Car car = findCarByCarId(updateCarRequest.getCarId());
+        List<Integer> colorId = updateCarRequest.getColorId();
+        List<Color> color = colorId.stream().map(colorManager::getColorByColorId).collect(Collectors.toList());
+        car.setCarColors(color);
+        car.setCarName(updateCarRequest.getCarName());
+        int brandId = updateCarRequest.getBrandId();
+        Brand brand = brandManager.getBrandByBrandId(brandId);
+        car.setBrand(brand);
+        car.setDailyPrice(updateCarRequest.getDailyPrice());
+        car.setProductYear(updateCarRequest.getProductYear());
+        return modelMapper.map(carDao.save(car),CarDto.class);
 
     }
 
