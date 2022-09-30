@@ -14,4 +14,6 @@ public class UpdateCustomerRequest {
     private String email;
 
     private String password;
+
+    private String matchingPassword;
 }

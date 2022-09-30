@@ -50,6 +50,10 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<?> customerNotFoundExceptionHandler(CustomerNotFoundException exception)  {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(CarNotDeliverException.class)
+    public ResponseEntity<?> carNotDeliverExceptionHandler(CarNotDeliverException exception)  {
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+    }
     @ExceptionHandler(ColorAlreadyExistException.class)
     public ResponseEntity<?> colorAlreadyExistExceptionHandler(ColorAlreadyExistException exception)  {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.CONFLICT);
@@ -61,6 +65,14 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(CustomerEmailAlreadyExistException.class)
     public ResponseEntity<?> customerEmailAlreadyExistExceptionHandler(CustomerEmailAlreadyExistException exception)  {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.CONFLICT);
+    }
+    @ExceptionHandler(CustomerAlreadyRentACar.class)
+    public ResponseEntity<?> customerAlreadyRentACarExceptionHandler(CustomerAlreadyRentACar exception)  {
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.CONFLICT);
+    }
+    @ExceptionHandler(WrongReturnDateException.class)
+    public ResponseEntity<?> wrongReturnDateExceptionHandler(WrongReturnDateException exception)  {
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
 }

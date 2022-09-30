@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -11,16 +12,21 @@ import java.util.List;
 public class CreateCarRequest {
 
 
-    @Size(min = 2,message = "Car Name must be bigger than 2")
+    @NotBlank
+    @Size(min = 3,message = "Car Name must be bigger than 2")
     private String carName;
 
+    @NotNull
     @Min(value = 0,message = "Daily Price of car must be bigger than 0")
     private Long dailyPrice;
 
+    @NotBlank
     private String productYear;
 
+    @NotNull
     private int brandId;
 
+    @NotNull
     private List<Integer> colorId;
 
 

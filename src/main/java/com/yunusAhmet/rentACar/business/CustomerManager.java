@@ -37,7 +37,7 @@ public class CustomerManager {
 
     public CustomerDto createCustomer(CreateCustomerRequest request){
         findTheSameCustomerEmail(request);
-        Customer customer = new Customer(request.getFirstName(),request.getLastName(),request.getEmail(),request.getPassword());
+        Customer customer = new Customer(request.getFirstName(),request.getLastName(),request.getEmail(),request.getPassword(),request.getMatchingPassword());
         return modelMapper.map(customerDao.save(customer),CustomerDto.class);
     }
 
@@ -48,6 +48,7 @@ public class CustomerManager {
     public CustomerDto updateCustomer(UpdateCustomerRequest request){
         Customer customer = getCustomerByCustomerId(request.getCustomerId());
         customer.setPassword(request.getPassword());
+        customer.setMatchingPassword(request.getMatchingPassword());
         customer.setFirstName(request.getFirstName());
         customer.setLastName(request.getLastName());
         return modelMapper.map(customerDao.save(customer),CustomerDto.class);
