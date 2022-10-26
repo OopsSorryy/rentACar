@@ -26,6 +26,9 @@ public class Customer {
 
     private String matchingPassword;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY,mappedBy = "customer")
     private Rental rental;
 

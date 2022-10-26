@@ -9,4 +9,5 @@ public interface BrandDao extends JpaRepository<Brand,Integer> {
     Optional<Brand> findBrandByBrandName(String brandName);
 
 
+
 }

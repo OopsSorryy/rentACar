@@ -3,6 +3,7 @@ package com.yunusAhmet.rentACar.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@EqualsAndHashCode
 public class Brand {
 
     @Id
@@ -26,5 +28,9 @@ public class Brand {
 
     public Brand(String brandName){
         this.brandName = brandName;
+    }
+    public Brand(int brandId,String brandName){
+        this.brandName = brandName;
+        this.brandId = brandId;
     }
 }
