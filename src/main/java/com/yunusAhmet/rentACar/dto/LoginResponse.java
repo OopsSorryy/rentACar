@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ColorDto {
+public class LoginResponse {
 
-    private int colorId;
-
-    private String colorName;
+    private String jwtToken;
 }

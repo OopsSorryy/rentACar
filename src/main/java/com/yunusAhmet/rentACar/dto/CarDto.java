@@ -1,19 +1,21 @@
 package com.yunusAhmet.rentACar.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.util.List;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CarDto {
-
-    //carDto ıle car entıty ıcerısındekı degısken ısımlerının aynı olması lazım
 
     private int carId;
 
-    @Size(min = 3,message = "Car Name must be bigger than 2")
+    @Size(min = 2,message = "Car Name must be bigger than 2")
     private String carName;
 
     @Min(value = 0,message = "Daily Price of car must be bigger than 0")

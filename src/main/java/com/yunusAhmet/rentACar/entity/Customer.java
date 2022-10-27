@@ -33,11 +33,47 @@ public class Customer {
     private Rental rental;
 
     public Customer(String firstName, String lastName, String email, String password,String matchingPassword) {
+        this.matchingPassword=matchingPassword;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+
+    }
+
+    public Customer(int customerId, String firstName, String lastName, String password, String matchingPassword) {
+        this.customerId = customerId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.matchingPassword = matchingPassword;
+    }
+
+    public Customer(int customerId, String firstName, String lastName, String email, String password, String matchingPassword) {
+        this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.matchingPassword = matchingPassword;
+    }
 
+    public Customer(int customerId, String firstName, String lastName, String email, String password, String matchingPassword, Role role) {
+        this.customerId = customerId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.matchingPassword = matchingPassword;
+        this.role = role;
+    }
+
+    public Customer(String firstName, String lastName, String email, String password, String matchingPassword, Role role) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.matchingPassword = matchingPassword;
+        this.role = role;
     }
 }

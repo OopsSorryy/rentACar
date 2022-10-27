@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -17,9 +17,9 @@ public class Rental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int rentalId;
 
-    private Date rentDate =new Date();
+    private LocalDateTime rentDate  ;
 
-    private Date returnDate;
+    private LocalDateTime returnDate;
 
     @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
     @JoinColumn
@@ -29,9 +29,12 @@ public class Rental {
     @JoinColumn
     private Car car;
 
-    public Rental( Date returnDate, Customer customer, Car car) {
+    public Rental(LocalDateTime rentDate,LocalDateTime returnDate, Customer customer, Car car) {
+
+        this.rentDate = rentDate;
         this.returnDate = returnDate;
         this.customer = customer;
         this.car = car;
     }
+
 }

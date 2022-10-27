@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class SecurityCustomer implements UserDetails {
+
     private final Customer customer;
 
     public SecurityCustomer(Customer customer) {
@@ -17,8 +18,9 @@ public class SecurityCustomer implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Stream.of(customer.getRole()).map(role ->
-                new SimpleGrantedAuthority(role.name())).collect(Collectors.toList());
+        return Stream.of(customer.getRole())
+                .map(role-> new SimpleGrantedAuthority(role.name()))
+                .collect(Collectors.toList());
     }
 
     @Override

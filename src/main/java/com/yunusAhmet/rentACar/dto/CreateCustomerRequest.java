@@ -2,12 +2,16 @@ package com.yunusAhmet.rentACar.dto;
 
 import com.yunusAhmet.rentACar.core.validator.PasswordMatches;
 import com.yunusAhmet.rentACar.core.validator.ValidPassword;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @PasswordMatches
 public class CreateCustomerRequest {
 

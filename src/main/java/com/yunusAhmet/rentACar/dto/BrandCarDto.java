@@ -1,11 +1,14 @@
 package com.yunusAhmet.rentACar.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class BrandCarDto {
 
     private int carId;
@@ -17,5 +20,10 @@ public class BrandCarDto {
     private String productYear;
 
     private List<ColorDto> carColors;
+
+    public BrandCarDto(int carId, String carName) {
+        this.carId = carId;
+        this.carName = carName;
+    }
 
 }

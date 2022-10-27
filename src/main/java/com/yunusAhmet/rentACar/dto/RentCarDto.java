@@ -1,20 +1,26 @@
 package com.yunusAhmet.rentACar.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class RentCarDto {
 
     private int rentalId;
 
-    private Date rentDate;
+    private LocalDateTime rentDate;
 
-    private Date returnDate;
+    private LocalDateTime returnDate;
 
     private CustomerDto customer;
 
     private CarDto car;
+
 
 }

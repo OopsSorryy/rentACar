@@ -4,12 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ColorDto {
+public class LoginRequest {
 
-    private int colorId;
-
-    private String colorName;
+    @NotBlank
+    private String email;
+    @NotBlank
+    private String password;
 }
