@@ -1,16 +1,16 @@
 package com.yunusAhmet.rentACar.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@EqualsAndHashCode
 public class Car {
 
     @Id
@@ -69,5 +69,6 @@ public class Car {
         this.productYear = productYear;
         this.carColors = carColors;
     }
+
 
 }

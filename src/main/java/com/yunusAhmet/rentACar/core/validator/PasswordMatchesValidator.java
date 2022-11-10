@@ -1,7 +1,6 @@
 package com.yunusAhmet.rentACar.core.validator;
 
 
-
 import com.yunusAhmet.rentACar.dto.CreateCustomerRequest;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

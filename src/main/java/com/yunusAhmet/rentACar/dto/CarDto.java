@@ -1,7 +1,9 @@
 package com.yunusAhmet.rentACar.dto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Min;
@@ -11,7 +13,10 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class CarDto {
+
+    //carDto ıle car entıty ıcerısındekı degısken ısımlerının aynı olması lazım
 
     private int carId;
 
@@ -24,6 +29,8 @@ public class CarDto {
     private String productYear;
 
     private BrandDto brand;
+
+    private List<ImageDto> image;
 
     private List<ColorDto> carColors;
 

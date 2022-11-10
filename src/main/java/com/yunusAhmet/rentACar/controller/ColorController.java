@@ -1,14 +1,12 @@
 package com.yunusAhmet.rentACar.controller;
 
 import com.yunusAhmet.rentACar.business.ColorManager;
-import com.yunusAhmet.rentACar.dto.ColorDto;
-import com.yunusAhmet.rentACar.dto.CreateColorRequest;
-import com.yunusAhmet.rentACar.dto.UpdateColorRequest;
+import com.yunusAhmet.rentACar.dto.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
+
 
 @RequestMapping("/color")
 @RestController

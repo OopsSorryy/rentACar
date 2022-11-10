@@ -7,13 +7,14 @@ import com.yunusAhmet.rentACar.core.exception.WrongReturnDateException;
 import com.yunusAhmet.rentACar.dataAccess.RentalDao;
 import com.yunusAhmet.rentACar.dto.RentACarRequest;
 import com.yunusAhmet.rentACar.dto.RentCarDto;
+import com.yunusAhmet.rentACar.dto.converter.RentCarDtoConverter;
 import com.yunusAhmet.rentACar.entity.Car;
 import com.yunusAhmet.rentACar.entity.Customer;
 import com.yunusAhmet.rentACar.entity.Rental;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -24,15 +25,18 @@ public class RentalManager {
     private final CustomerManager customerManager;
 
     private final CarManager carManager;
-    private final ModelMapper modelMapper;
+    private final RentCarDtoConverter carDtoConverter;
 
 
 
-    public RentalManager(RentalDao rentalDao, CustomerManager customerManager, CarManager carManager, ModelMapper modelMapper) {
+
+    public RentalManager(RentalDao rentalDao, CustomerManager customerManager, CarManager carManager, RentCarDtoConverter carDtoConverter) {
         this.rentalDao = rentalDao;
         this.customerManager = customerManager;
         this.carManager = carManager;
-        this.modelMapper = modelMapper;
+
+        this.carDtoConverter = carDtoConverter;
+
     }
 
     public RentCarDto rentACar(RentACarRequest request) {
@@ -41,7 +45,7 @@ public class RentalManager {
         Customer customer = customerManager.getCustomerByCustomerId(request.getCustomerId());
 
         dateControl(request);
-        Rental rental = new Rental(request.getReturnDate(), customer, car);
+        Rental rental = new Rental(LocalDateTime.now().withNano(0),request.getReturnDate(), customer, car);
 
 
         List<Rental> rental1 = rentalDao.findAll();
@@ -52,13 +56,16 @@ public class RentalManager {
 
         customerAlreadyRent(customer, customerIds);
 
-        return modelMapper.map(rentalDao.save(rental), RentCarDto.class);
+
+        Rental save = rentalDao.save(rental);
+
+        return carDtoConverter.convert(save);
 
 
     }
 
     private void dateControl(RentACarRequest request) {
-        if(new Date().after(request.getReturnDate())){
+        if(LocalDateTime.now().isAfter(request.getReturnDate())){
             throw new WrongReturnDateException(Constant.WRONG_RETURN_DATE);
         }
     }
@@ -82,6 +89,9 @@ public class RentalManager {
         }
     }
 }
+
+
+
 
 
 

@@ -4,11 +4,9 @@ import com.yunusAhmet.rentACar.core.exception.ColorAlreadyExistException;
 import com.yunusAhmet.rentACar.core.exception.ColorNotFoundException;
 import com.yunusAhmet.rentACar.core.constant.Constant;
 import com.yunusAhmet.rentACar.dataAccess.ColorDao;
-import com.yunusAhmet.rentACar.dto.ColorDto;
-import com.yunusAhmet.rentACar.dto.CreateColorRequest;
-import com.yunusAhmet.rentACar.dto.UpdateColorRequest;
+import com.yunusAhmet.rentACar.dto.*;
+import com.yunusAhmet.rentACar.dto.converter.ColorDtoConverter;
 import com.yunusAhmet.rentACar.entity.Color;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,29 +15,26 @@ import java.util.Optional;
 public class ColorManager {
 
     private final ColorDao colorDao;
-    private final ModelMapper modelMapper;
+    private final ColorDtoConverter converter;
 
 
-    public ColorManager(ColorDao colorDao, ModelMapper modelMapper) {
+    public ColorManager(ColorDao colorDao, ColorDtoConverter converter) {
         this.colorDao = colorDao;
-        this.modelMapper = modelMapper;
+        this.converter = converter;
+
     }
     protected Color getColorByColorId(int colorId){
         return colorDao.findById(colorId).orElseThrow(() -> new ColorNotFoundException(Constant.COLOR_NOT_FOUND));
     }
 
-    protected void findTheSameColor(CreateColorRequest request){
+
+    public ColorDto createColor(CreateColorRequest request){
         Optional<Color> color =  colorDao.findColorByColorName(request.getColorName());
         if(color.isPresent()){
             throw new ColorAlreadyExistException(Constant.COLOR_ALREADY_EXIST);
         }
-
-    }
-
-    public ColorDto createColor(CreateColorRequest request){
-        findTheSameColor(request);
-        Color color = new Color(request.getColorName());
-        return modelMapper.map(colorDao.save(color),ColorDto.class);
+        Color color1 = new Color(request.getColorName());
+        return converter.convert(colorDao.save(color1));
     }
 
     public void deleteColorByColorId(int colorId){
@@ -47,9 +42,13 @@ public class ColorManager {
     }
 
     public ColorDto updateColor(UpdateColorRequest request){
-        Color color = getColorByColorId(request.getColorId());
-        color.setColorName(request.getColorName());
-        return modelMapper.map(colorDao.save(color),ColorDto.class);
+        Optional<Color> color = colorDao.findColorByColorName(request.getColorName());
+        if (color.isPresent()) {
+            throw new ColorAlreadyExistException(Constant.COLOR_ALREADY_EXIST);
+        }
+        Color color1= getColorByColorId(request.getColorId());
+        color1.setColorName(request.getColorName());
+        return converter.convert(colorDao.save(color1));
     }
 
 

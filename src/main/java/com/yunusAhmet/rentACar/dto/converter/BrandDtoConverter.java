@@ -10,8 +10,8 @@ public class BrandDtoConverter {
     public BrandDto convert(Brand from){
         return new BrandDto
                 (
-                        from.getBrandId(),
-                        from.getBrandName()
+                from.getBrandId(),
+                from.getBrandName()
                 );
     }
 }

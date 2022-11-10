@@ -6,12 +6,10 @@ import com.yunusAhmet.rentACar.dto.CreateCarRequest;
 import com.yunusAhmet.rentACar.dto.UpdateCarRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-
 
 @RequestMapping("/car")
 @RestController
@@ -23,15 +21,13 @@ public class CarController {
         this.carManager = carManager;
     }
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<CarDto> createCar(@Valid @RequestBody CreateCarRequest request){
-
         return new ResponseEntity<>(carManager.createCar(request),HttpStatus.CREATED);
     }
 
     @GetMapping
     public ResponseEntity<List<CarDto>> getAllCar(){
-
         return ResponseEntity.ok(carManager.getAllCar());
     }
 
@@ -43,7 +39,8 @@ public class CarController {
 
     @PutMapping
     public ResponseEntity<CarDto> updateCar(@Valid @RequestBody UpdateCarRequest request){
-        return ResponseEntity.ok(carManager.updateCar(request));
+        return ResponseEntity.ok(carManager.update(request));
     }
+
 
 }

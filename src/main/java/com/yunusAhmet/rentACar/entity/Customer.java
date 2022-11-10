@@ -1,8 +1,11 @@
 package com.yunusAhmet.rentACar.entity;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
 
 import javax.persistence.*;
 
@@ -10,8 +13,10 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Customer {
 
+    // docker,aws,integration test,auth2,kafka,rabbit,redis,microservice
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;

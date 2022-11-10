@@ -31,11 +31,11 @@ public class BrandCarDtoConverter {
         return fromList
                 .stream()
                 .map(from ->new BrandCarDto(
-                        from.getCarId(),
-                        from.getCarName(),
-                        from.getDailyPrice(),
-                        from.getProductYear(),
-                        from.getCarColors().stream().map(colorDtoConverter::convert).toList())
+                from.getCarId(),
+                from.getCarName(),
+                from.getDailyPrice(),
+                from.getProductYear(),
+                from.getCarColors().stream().map(colorDtoConverter::convert).toList())
                 ).collect(Collectors.toList());
     }
 }

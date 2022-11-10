@@ -1,9 +1,8 @@
 package com.yunusAhmet.rentACar.controller;
 
+
 import com.yunusAhmet.rentACar.business.CustomerManager;
-import com.yunusAhmet.rentACar.dto.CreateCustomerRequest;
-import com.yunusAhmet.rentACar.dto.CustomerDto;
-import com.yunusAhmet.rentACar.dto.UpdateCustomerRequest;
+import com.yunusAhmet.rentACar.dto.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +19,7 @@ public class CustomerController {
         this.customerManager = customerManager;
     }
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<CustomerDto> createCustomer(@Valid @RequestBody CreateCustomerRequest request){
         return new ResponseEntity<>(customerManager.createCustomer(request), HttpStatus.CREATED);
     }
