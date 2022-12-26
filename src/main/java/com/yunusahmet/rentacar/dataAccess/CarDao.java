@@ -1,7 +1,8 @@
 package com.yunusahmet.rentacar.dataAccess;
 
-import com.yunusahmet.rentacar.entity.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.yunusahmet.rentacar.entity.Car;
 
 import java.util.List;
 import java.util.Optional;

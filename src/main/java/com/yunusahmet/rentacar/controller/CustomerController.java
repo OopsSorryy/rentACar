@@ -12,6 +12,7 @@ import javax.validation.Valid;
 
 @RequestMapping("/customer")
 @RestController
+
 public class CustomerController {
 
     private final CustomerManager customerManager;
@@ -20,7 +21,7 @@ public class CustomerController {
         this.customerManager = customerManager;
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<CustomerDto> createCustomer(@Valid @RequestBody CreateCustomerRequest request){
         return new ResponseEntity<>(customerManager.createCustomer(request), HttpStatus.CREATED);
     }
@@ -33,7 +34,7 @@ public class CustomerController {
 
     @PutMapping
     public ResponseEntity<CustomerDto> updateCustomer(@Valid @RequestBody UpdateCustomerRequest request){
-        return ResponseEntity.ok(customerManager.updateCustomer(request));
+        return new ResponseEntity<>(customerManager.updateCustomer(request),HttpStatus.CREATED);
     }
 
 }

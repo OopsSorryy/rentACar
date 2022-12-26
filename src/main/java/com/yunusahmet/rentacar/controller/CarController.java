@@ -1,11 +1,13 @@
 package com.yunusahmet.rentacar.controller;
 
-import com.yunusahmet.rentacar.dto.BrandCarDto;
+
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.yunusahmet.rentacar.business.CarManager;
+import com.yunusahmet.rentacar.dto.BrandCarDto;
 import com.yunusahmet.rentacar.dto.CarDto;
 import com.yunusahmet.rentacar.dto.CreateCarRequest;
 import com.yunusahmet.rentacar.dto.UpdateCarRequest;
@@ -13,9 +15,9 @@ import com.yunusahmet.rentacar.dto.UpdateCarRequest;
 import javax.validation.Valid;
 import java.util.List;
 
-
 @RequestMapping("/car")
 @RestController
+
 public class CarController {
 
     private final CarManager carManager;
@@ -46,7 +48,7 @@ public class CarController {
 
     @PutMapping
     public ResponseEntity<CarDto> updateCar(@Valid @RequestBody UpdateCarRequest request){
-        return ResponseEntity.ok(carManager.update(request));
+        return new ResponseEntity<>(carManager.update(request),HttpStatus.CREATED);
     }
 
 

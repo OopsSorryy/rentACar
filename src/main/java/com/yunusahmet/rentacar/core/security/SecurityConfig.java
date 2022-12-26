@@ -4,7 +4,7 @@ package com.yunusahmet.rentacar.core.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -49,7 +49,8 @@ public class SecurityConfig {
     }
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().antMatchers( HttpMethod.POST,"/login","/customer");
+        return (web) -> web.ignoring().antMatchers( "/login","/customer/**").
+                antMatchers("/swagger-ui/**", "/v3/api-docs/**");
     }
 
     @Bean

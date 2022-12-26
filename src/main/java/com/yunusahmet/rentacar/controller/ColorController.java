@@ -1,5 +1,6 @@
 package com.yunusahmet.rentacar.controller;
 
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import javax.validation.Valid;
 
 @RequestMapping("/color")
 @RestController
+
 public class ColorController {
 
     private final ColorManager colorManager;
@@ -33,7 +35,7 @@ public class ColorController {
 
     @PutMapping
     public ResponseEntity<ColorDto> updateColor(@Valid @RequestBody UpdateColorRequest request){
-        return ResponseEntity.ok(colorManager.updateColor(request));
+        return new ResponseEntity<>(colorManager.updateColor(request),HttpStatus.CREATED);
     }
 
 }

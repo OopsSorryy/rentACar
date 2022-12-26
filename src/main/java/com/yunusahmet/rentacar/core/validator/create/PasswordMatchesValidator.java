@@ -1,4 +1,4 @@
-package com.yunusahmet.rentacar.core.validator;
+package com.yunusahmet.rentacar.core.validator.create;
 
 
 import javax.validation.ConstraintValidator;

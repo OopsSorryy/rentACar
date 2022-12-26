@@ -1,11 +1,11 @@
 package com.yunusahmet.rentacar.business;
 
 
-import com.yunusahmet.rentacar.core.constant.Constant;
-import com.yunusahmet.rentacar.core.exception.ColorNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.yunusahmet.rentacar.core.constant.Constant;
 import com.yunusahmet.rentacar.core.exception.ColorAlreadyExistException;
+import com.yunusahmet.rentacar.core.exception.ColorNotFoundException;
 import com.yunusahmet.rentacar.dataAccess.ColorDao;
 import com.yunusahmet.rentacar.dto.*;
 import com.yunusahmet.rentacar.dto.converter.ColorDtoConverter;
@@ -31,8 +31,7 @@ public class ColorManager {
     }
 
     public List<Color> getColorsByColorIds(List<Integer> colorIds){
-        return colorDao.
-                findColorsByColorIdIn(colorIds).orElseThrow(()->new ColorNotFoundException(Constant.COLOR_NOT_FOUND));
+        return colorDao.findColorsByColorIdIn(colorIds);
     }
 
 

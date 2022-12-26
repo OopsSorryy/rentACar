@@ -13,6 +13,7 @@ import javax.validation.Valid;
 
 @RequestMapping("/brand")
 @RestController
+
 public class BrandController {
 
     private final BrandManager brandManager;
@@ -33,6 +34,6 @@ public class BrandController {
 
     @PutMapping
     public ResponseEntity<BrandDto> updateBrand(@Valid @RequestBody UpdateBrandRequest request){
-        return ResponseEntity.ok(brandManager.updateBrand(request));
+        return new ResponseEntity<>(brandManager.updateBrand(request),HttpStatus.CREATED);
     }
 }

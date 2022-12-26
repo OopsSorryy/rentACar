@@ -1,12 +1,12 @@
 package com.yunusahmet.rentacar.controller;
 
 
-import com.yunusahmet.rentacar.business.ImageManager;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.yunusahmet.rentacar.business.ImageManager;
 import com.yunusahmet.rentacar.dto.ImageDto;
 
 import javax.validation.Valid;

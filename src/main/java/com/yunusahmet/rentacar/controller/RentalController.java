@@ -25,7 +25,7 @@ public class RentalController {
     }
 
     @PostMapping
-    public ResponseEntity<RentCarDto> rentCar(@Valid @RequestBody RentACarRequest request){
+    public ResponseEntity<RentCarDto> rentACar(@Valid @RequestBody RentACarRequest request){
         return new ResponseEntity<>(rentalManager.rentACar(request), HttpStatus.CREATED);
     }
 }

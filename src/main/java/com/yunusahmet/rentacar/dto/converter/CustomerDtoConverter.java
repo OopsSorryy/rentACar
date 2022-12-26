@@ -1,9 +1,9 @@
 package com.yunusahmet.rentacar.dto.converter;
 
-import com.yunusahmet.rentacar.entity.Customer;
 import org.springframework.stereotype.Component;
 
 import com.yunusahmet.rentacar.dto.CustomerDto;
+import com.yunusahmet.rentacar.entity.Customer;
 
 @Component
 public class CustomerDtoConverter {

@@ -1,7 +1,5 @@
 package com.yunusahmet.rentacar.dto;
 
-import com.yunusahmet.rentacar.core.validator.PasswordMatches;
-import com.yunusahmet.rentacar.core.validator.ValidPassword;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -9,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+
+import com.yunusahmet.rentacar.core.validator.create.PasswordMatches;
+import com.yunusahmet.rentacar.core.validator.ValidPassword;
 
 
 @Data

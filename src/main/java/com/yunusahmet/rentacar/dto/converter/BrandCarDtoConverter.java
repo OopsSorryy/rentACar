@@ -1,8 +1,9 @@
 package com.yunusahmet.rentacar.dto.converter;
 
+import org.springframework.stereotype.Component;
+
 import com.yunusahmet.rentacar.dto.BrandCarDto;
 import com.yunusahmet.rentacar.entity.Car;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;

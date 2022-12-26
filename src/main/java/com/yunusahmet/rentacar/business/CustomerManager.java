@@ -1,5 +1,6 @@
 package com.yunusahmet.rentacar.business;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,6 +20,7 @@ import com.yunusahmet.rentacar.entity.SecurityCustomer;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class CustomerManager implements UserDetailsService {
 
     private final CustomerDao customerDao;
@@ -28,13 +30,6 @@ public class CustomerManager implements UserDetailsService {
 
 
 
-    public CustomerManager(CustomerDao customerDao, BCryptPasswordEncoder passwordEncoder, CustomerDtoConverter customerDtoConverter) {
-        this.customerDao = customerDao;
-        this.passwordEncoder = passwordEncoder;
-
-        this.customerDtoConverter = customerDtoConverter;
-
-    }
 
     public Customer getCustomerByCustomerId(int customerId){
         return customerDao.findById(customerId).orElseThrow(() -> new CustomerNotFoundException(Constant.CUSTOMER_NOT_FOUND));
@@ -63,8 +58,8 @@ public class CustomerManager implements UserDetailsService {
 
     public CustomerDto updateCustomer(UpdateCustomerRequest request){
         Customer customer1 = getCustomerByCustomerId(request.getCustomerId());
-        customer1.setPassword(request.getPassword());
-        customer1.setMatchingPassword(request.getMatchingPassword());
+        customer1.setPassword(passwordEncoder.encode(request.getPassword()));
+        customer1.setMatchingPassword(passwordEncoder.encode(request.getMatchingPassword()));
         customer1.setFirstName(request.getFirstName());
         customer1.setLastName(request.getLastName());
         return customerDtoConverter.convert(customerDao.save(customer1));
