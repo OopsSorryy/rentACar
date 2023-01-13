@@ -8,7 +8,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.yunusahmet.rentacar.business.CustomerManager;
+import com.yunusahmet.rentacar.service.CustomerManager;
 import com.yunusahmet.rentacar.entity.SecurityCustomer;
 
 import javax.servlet.FilterChain;

@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.yunusahmet.rentacar.business.CarManager;
+import com.yunusahmet.rentacar.service.CarManager;
 import com.yunusahmet.rentacar.dto.BrandCarDto;
 import com.yunusahmet.rentacar.dto.CarDto;
 import com.yunusahmet.rentacar.dto.CreateCarRequest;

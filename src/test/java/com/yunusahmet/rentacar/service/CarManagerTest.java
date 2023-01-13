@@ -1,11 +1,11 @@
-package com.yunusahmet.rentacar.business;
+package com.yunusahmet.rentacar.service;
 
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.yunusahmet.rentacar.core.exception.CarNotFoundException;
-import com.yunusahmet.rentacar.dataAccess.CarDao;
+import com.yunusahmet.rentacar.repository.CarDao;
 import com.yunusahmet.rentacar.dto.*;
 import com.yunusahmet.rentacar.dto.converter.BrandCarDtoConverter;
 import com.yunusahmet.rentacar.dto.converter.CarDtoConverter;
@@ -137,7 +137,7 @@ public class CarManagerTest {
         List<Car> cars = Arrays.asList(car,car1);
 
 
-        when(carDao.getCarsByBrand_BrandId(brandId)).thenReturn(Optional.of(cars));
+        when(carDao.getCarsByBrand_BrandId(brandId)).thenReturn(cars);
         when(brandCarDtoConverter.convert(cars)).thenReturn(brandCarDtos);
 
         List<BrandCarDto> result = carManager.getCarsByBrandId(brandId);

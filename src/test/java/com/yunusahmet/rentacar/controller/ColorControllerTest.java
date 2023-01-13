@@ -1,7 +1,7 @@
 package com.yunusahmet.rentacar.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.yunusahmet.rentacar.business.ColorManager;
+import com.yunusahmet.rentacar.service.ColorManager;
 import com.yunusahmet.rentacar.dto.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

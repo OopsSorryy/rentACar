@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.yunusahmet.rentacar.business.ColorManager;
+import com.yunusahmet.rentacar.service.ColorManager;
 import com.yunusahmet.rentacar.dto.*;
 
 import javax.validation.Valid;

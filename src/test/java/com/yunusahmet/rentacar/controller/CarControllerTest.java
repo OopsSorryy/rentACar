@@ -2,7 +2,7 @@ package com.yunusahmet.rentacar.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import com.yunusahmet.rentacar.business.CarManager;
+import com.yunusahmet.rentacar.service.CarManager;
 import com.yunusahmet.rentacar.dto.*;
 
 import org.junit.jupiter.api.BeforeEach;

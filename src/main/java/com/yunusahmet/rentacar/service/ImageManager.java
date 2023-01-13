@@ -1,14 +1,13 @@
-package com.yunusahmet.rentacar.business;
+package com.yunusahmet.rentacar.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.yunusahmet.rentacar.core.constant.Constant;
 import com.yunusahmet.rentacar.core.exception.CarHasNotImageException;
-import com.yunusahmet.rentacar.core.exception.CarNotFoundException;
 import com.yunusahmet.rentacar.core.exception.ImageNotFoundException;
 import com.yunusahmet.rentacar.core.exception.MaxImageException;
-import com.yunusahmet.rentacar.dataAccess.ImageDao;
+import com.yunusahmet.rentacar.repository.ImageDao;
 import com.yunusahmet.rentacar.dto.ImageDto;
 import com.yunusahmet.rentacar.dto.converter.ImageConverter;
 import com.yunusahmet.rentacar.entity.Car;
@@ -53,8 +52,7 @@ public class ImageManager  {
 
     protected void maxImageControl(int carId){
         List<Image> images =
-                imageDao.getImagesByCar_CarId(carId).orElseThrow(
-                        () -> new CarNotFoundException(Constant.CAR_NOT_FOUND));
+                imageDao.getImagesByCar_CarId(carId);
         if(images.size()==6){
             throw new MaxImageException(Constant.MAX_IMAGE_LESS_THAN_SIX);
         }

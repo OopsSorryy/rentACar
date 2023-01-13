@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yunusahmet.rentacar.business.AuthManager;
+import com.yunusahmet.rentacar.service.AuthManager;
 import com.yunusahmet.rentacar.dto.LoginRequest;
 import com.yunusahmet.rentacar.dto.LoginResponse;
 

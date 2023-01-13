@@ -1,4 +1,4 @@
-package com.yunusahmet.rentacar.business;
+package com.yunusahmet.rentacar.service;
 
 import org.springframework.stereotype.Service;
 
@@ -6,7 +6,7 @@ import com.yunusahmet.rentacar.core.constant.Constant;
 import com.yunusahmet.rentacar.core.exception.CarNotDeliverException;
 import com.yunusahmet.rentacar.core.exception.CustomerAlreadyRentACar;
 import com.yunusahmet.rentacar.core.exception.WrongReturnDateException;
-import com.yunusahmet.rentacar.dataAccess.RentalDao;
+import com.yunusahmet.rentacar.repository.RentalDao;
 import com.yunusahmet.rentacar.dto.RentACarRequest;
 import com.yunusahmet.rentacar.dto.RentCarDto;
 import com.yunusahmet.rentacar.dto.converter.RentCarDtoConverter;

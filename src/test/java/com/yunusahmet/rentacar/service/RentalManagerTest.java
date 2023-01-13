@@ -1,4 +1,4 @@
-package com.yunusahmet.rentacar.business;
+package com.yunusahmet.rentacar.service;
 
 
 import org.junit.jupiter.api.BeforeEach;
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.yunusahmet.rentacar.core.exception.CarNotDeliverException;
 import com.yunusahmet.rentacar.core.exception.CustomerAlreadyRentACar;
 import com.yunusahmet.rentacar.core.exception.WrongReturnDateException;
-import com.yunusahmet.rentacar.dataAccess.RentalDao;
+import com.yunusahmet.rentacar.repository.RentalDao;
 import com.yunusahmet.rentacar.dto.*;
 import com.yunusahmet.rentacar.dto.converter.RentCarDtoConverter;
 import com.yunusahmet.rentacar.entity.*;

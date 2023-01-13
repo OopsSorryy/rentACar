@@ -1,4 +1,4 @@
-package com.yunusahmet.rentacar.business;
+package com.yunusahmet.rentacar.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.yunusahmet.rentacar.core.constant.Constant;
 import com.yunusahmet.rentacar.core.exception.CustomerEmailAlreadyExistException;
 import com.yunusahmet.rentacar.core.exception.CustomerNotFoundException;
-import com.yunusahmet.rentacar.dataAccess.CustomerDao;
+import com.yunusahmet.rentacar.repository.CustomerDao;
 import com.yunusahmet.rentacar.dto.*;
 import com.yunusahmet.rentacar.dto.converter.CustomerDtoConverter;
 import com.yunusahmet.rentacar.entity.Customer;

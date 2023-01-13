@@ -1,4 +1,4 @@
-package com.yunusahmet.rentacar.dataAccess;
+package com.yunusahmet.rentacar.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

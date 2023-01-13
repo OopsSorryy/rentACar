@@ -1,11 +1,10 @@
-package com.yunusahmet.rentacar.business;
+package com.yunusahmet.rentacar.service;
 
 import org.springframework.stereotype.Service;
 
 import com.yunusahmet.rentacar.core.constant.Constant;
-import com.yunusahmet.rentacar.core.exception.BrandNotFoundException;
 import com.yunusahmet.rentacar.core.exception.CarNotFoundException;
-import com.yunusahmet.rentacar.dataAccess.CarDao;
+import com.yunusahmet.rentacar.repository.CarDao;
 import com.yunusahmet.rentacar.dto.BrandCarDto;
 import com.yunusahmet.rentacar.dto.CarDto;
 import com.yunusahmet.rentacar.dto.CreateCarRequest;
@@ -75,7 +74,7 @@ public class CarManager {
     }
 
     private List<Car> findCarsByBrandId(int brandId){
-        return carDao.getCarsByBrand_BrandId(brandId).orElseThrow(()->new BrandNotFoundException(Constant.BRAND_NOT_FOUND));
+        return carDao.getCarsByBrand_BrandId(brandId);
     }
 
     public List<BrandCarDto> getCarsByBrandId(int brandId){

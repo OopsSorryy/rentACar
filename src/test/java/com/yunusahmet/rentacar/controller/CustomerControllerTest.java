@@ -1,7 +1,7 @@
 package com.yunusahmet.rentacar.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.yunusahmet.rentacar.business.CustomerManager;
+import com.yunusahmet.rentacar.service.CustomerManager;
 import com.yunusahmet.rentacar.dto.CreateCustomerRequest;
 import com.yunusahmet.rentacar.dto.CustomerDto;
 import com.yunusahmet.rentacar.dto.UpdateCustomerRequest;

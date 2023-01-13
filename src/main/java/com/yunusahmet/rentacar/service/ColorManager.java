@@ -1,4 +1,4 @@
-package com.yunusahmet.rentacar.business;
+package com.yunusahmet.rentacar.service;
 
 
 import org.springframework.stereotype.Service;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.yunusahmet.rentacar.core.constant.Constant;
 import com.yunusahmet.rentacar.core.exception.ColorAlreadyExistException;
 import com.yunusahmet.rentacar.core.exception.ColorNotFoundException;
-import com.yunusahmet.rentacar.dataAccess.ColorDao;
+import com.yunusahmet.rentacar.repository.ColorDao;
 import com.yunusahmet.rentacar.dto.*;
 import com.yunusahmet.rentacar.dto.converter.ColorDtoConverter;
 import com.yunusahmet.rentacar.entity.Color;
